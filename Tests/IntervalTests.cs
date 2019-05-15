@@ -2,6 +2,7 @@ using System;
 using Xunit;
 using MusicNoteHelper;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace Tests
 {
@@ -69,6 +70,39 @@ namespace Tests
             var possibleNotes = aString.PossibleNotes();
             var notesAsString = String.Join<Note>(' ', possibleNotes);
             Assert.Equal("A A# B C C# D D# E F F# G G#", notesAsString);
+        }
+
+        [Fact]
+        public void GuitarWithStandardTuningProducesCorrectNotes()
+        {
+            var guitar = new StringedInstrument(
+                new List<InstrumentString>()
+                {
+                    InstrumentString.For(Note.E, 20),
+                    InstrumentString.For(Note.A, 20),
+                    InstrumentString.For(Note.D, 20),
+                    InstrumentString.For(Note.G, 20),
+                    InstrumentString.For(Note.B, 20),
+                    InstrumentString.For(Note.E, 20),
+                });
+
+            var bottomEStringNotes = String.Join<Note>(" ", guitar.Strings.ElementAt(0).PossibleNotes());
+            Assert.Equal("E F F# G G# A A# B C C# D D# E F F# G G# A A# B", bottomEStringNotes);
+
+            var aStringNotes = String.Join<Note>(" ", guitar.Strings.ElementAt(1).PossibleNotes());
+            Assert.Equal("A A# B C C# D D# E F F# G G# A A# B C C# D D# E", aStringNotes);
+
+            var dStringNotes = String.Join<Note>(" ", guitar.Strings.ElementAt(2).PossibleNotes());
+            Assert.Equal("D D# E F F# G G# A A# B C C# D D# E F F# G G# A", dStringNotes);
+
+            var gStringNotes = String.Join<Note>(" ", guitar.Strings.ElementAt(3).PossibleNotes());
+            Assert.Equal("G G# A A# B C C# D D# E F F# G G# A A# B C C# D", gStringNotes);
+                
+            var bStringNotes = String.Join<Note>(" ", guitar.Strings.ElementAt(4).PossibleNotes());
+            Assert.Equal("B C C# D D# E F F# G G# A A# B C C# D D# E F F#", bStringNotes);
+
+            var topEStringNotes = String.Join<Note>(" ", guitar.Strings.ElementAt(5).PossibleNotes());
+            Assert.Equal("E F F# G G# A A# B C C# D D# E F F# G G# A A# B", topEStringNotes);
         }
     }
 }
