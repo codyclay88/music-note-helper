@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MusicNoteHelper
 {
@@ -14,6 +15,11 @@ namespace MusicNoteHelper
         }
 
         public string Name { get; }
+
+        public static Note For(string note)
+        {
+            return PossibleNotes.FirstOrDefault(n => n.Name == note) ?? Note.Rest;
+        }
 
         public static bool operator ==(Note left, Note right)
         {
@@ -46,6 +52,12 @@ namespace MusicNoteHelper
             return Name;
         }
 
+        private static List<Note> PossibleNotes = new List<Note>
+        {
+            Note.A, Note.ASharp, Note.B, Note.C, Note.CSharp, Note.D, Note.DSharp,
+            Note.E, Note.F, Note.FSharp, Note.G, Note.GSharp, Note.Rest
+        };
+
         public static Note A => new Note("A");
         public static Note ASharp => new Note("A#");
         public static Note B => new Note("B");
@@ -60,7 +72,7 @@ namespace MusicNoteHelper
         public static Note GSharp => new Note("G#");
 
         // This is the equivalent of a Null Object
-        public static Note Rest => new Note("Rest");
+        public static Note Rest => new Note(" ");
 
        
     }

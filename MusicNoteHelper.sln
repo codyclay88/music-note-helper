@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.156
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicNoteHelper", "MusicNoteHelper\MusicNoteHelper.csproj", "{EF0B3456-5FDC-443C-A675-8409192A7745}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicNoteHelper", "MusicNoteHelper\MusicNoteHelper.csproj", "{EF0B3456-5FDC-443C-A675-8409192A7745}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{10EA7018-4CE8-4941-A009-50F2B900BA74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{10EA7018-4CE8-4941-A009-50F2B900BA74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandLineClient", "CommandLineClient\CommandLineClient.csproj", "{EADB0E7A-FDC2-4595-B642-8C669C42B283}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{10EA7018-4CE8-4941-A009-50F2B900BA74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10EA7018-4CE8-4941-A009-50F2B900BA74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10EA7018-4CE8-4941-A009-50F2B900BA74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EADB0E7A-FDC2-4595-B642-8C669C42B283}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EADB0E7A-FDC2-4595-B642-8C669C42B283}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EADB0E7A-FDC2-4595-B642-8C669C42B283}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EADB0E7A-FDC2-4595-B642-8C669C42B283}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
