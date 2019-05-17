@@ -52,11 +52,21 @@ namespace MusicNoteHelper
             return Name;
         }
 
-        private static List<Note> PossibleNotes = new List<Note>
+        private static Note[] PossibleNotes = new Note[]
         {
             Note.A, Note.ASharp, Note.B, Note.C, Note.CSharp, Note.D, Note.DSharp,
-            Note.E, Note.F, Note.FSharp, Note.G, Note.GSharp, Note.Rest
+            Note.E, Note.F, Note.FSharp, Note.G, Note.GSharp
         };
+
+        public Note Sharpen()
+        {
+            return this;
+        }
+
+        public Note Flatten()
+        {
+            return this;
+        }
 
         public static Note A => new Note("A");
         public static Note ASharp => new Note("A#");

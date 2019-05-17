@@ -6,8 +6,24 @@ using System.Collections.Generic;
 
 namespace Tests
 {
-    public class IntervalTests
+    public class Tests
     {
+        [Fact]
+        public void NotesCanBeSharpened()
+        {
+            var bNote = Note.B;
+            var cNote = bNote.Sharpen();
+            Assert.Equal(Note.C, cNote);
+        }
+
+        [Fact]
+        public void NotesCanBeFlattened()
+        {
+            var bNote = Note.B;
+            var aSharpNote = bNote.Flatten();
+            Assert.Equal(Note.ASharp, aSharpNote);
+        }
+
         [Fact]
         public void MajorScaleConsistsOf7Notes()
         {

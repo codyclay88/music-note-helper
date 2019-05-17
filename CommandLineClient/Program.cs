@@ -26,12 +26,27 @@ namespace CommandLineClient
                 Console.WriteLine("\n=== INTERVALS ===");
                 PrintIntervals(intervals);
 
-                Console.WriteLine("\n=== NOTES IN CHORD ===");
+                Console.WriteLine("\n=== NOTES IN MAJOR SCALE ===");
+                var notesOfMajorScale = MajorScale.For(note);
+                Console.WriteLine(String.Join<Note>(" - ", notesOfMajorScale));
+
+                Console.WriteLine("\n=== NOTES IN MAJOR CHORD ===");
                 var notesOfMajorChord = MajorChord.For(note);
                 Console.WriteLine(String.Join<Note>(" - ", notesOfMajorChord));
 
-                Console.WriteLine("\n=== NOTES ON GUITAR ===");
+                Console.WriteLine("\n=== MAJOR CHORD NOTES ON GUITAR ===");
                 PrintChordNotesOnInstrument(StringedInstrument.Guitar, notesOfMajorChord);
+
+                Console.WriteLine("\n=== NOTES IN MINOR SCALE ===");
+                var notesOfMinorScale = MinorScale.For(note);
+                Console.WriteLine(String.Join<Note>(" - ", notesOfMinorScale));
+
+                Console.WriteLine("\n=== NOTES IN MINOR CHORD ===");
+                var notesOfMinorChord = MinorChord.For(note);
+                Console.WriteLine(String.Join<Note>(" - ", notesOfMinorChord));
+
+                Console.WriteLine("\n=== MINOR CHORD NOTES ON GUITAR ===");
+                PrintChordNotesOnInstrument(StringedInstrument.Guitar, notesOfMinorChord);
 
                 Console.WriteLine("=======================\n");
             }
