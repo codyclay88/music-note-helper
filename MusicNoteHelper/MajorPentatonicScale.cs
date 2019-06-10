@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MusicNoteHelper
 {
-    public class MinorScale
+    public class MajorPentatonicScale
     {
         public static ICollection<Note> For(Note note)
         {
@@ -13,11 +13,9 @@ namespace MusicNoteHelper
             {
                 interval.Unison,
                 interval.MajorSecond,
-                interval.MinorThird,
-                interval.PerfectFourth,
+                interval.MajorThird,
                 interval.PerfectFifth,
-                interval.MinorSixth,
-                interval.MinorSeventh,
+                interval.MajorSixth,
             };
         }
     }

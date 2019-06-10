@@ -20,13 +20,22 @@ namespace MusicNoteHelper
             last.Next = first;
             for(var i = 0; i < items.Count; i++)
             {
-                var node = new Node<T>(items[i]);
-                nodes[i] = node;
-                if(i != 0)
+                if(i == 0)
                 {
+                    nodes[i] = first;   
+                }
+                else if(i == items.Count - 1)
+                {
+                    nodes[i] = last;
+                }
+                else
+                {
+                    var node = new Node<T>(items[i]);
+                    nodes[i] = node;
                     node.Prev = nodes[i - 1];
                     nodes[i - 1].Next = node;
                 }
+                
             }
             _items = new ReadOnlyCollection<Node<T>>(nodes);
         }

@@ -20,7 +20,7 @@ namespace Tests
         {
             var enumerable = new List<int> { 1, 2, 3, 4 };
             var collection = CircularCollection<int>.FromCollection(enumerable);
-            //Assert.Equal(4, );
+            //Assert.Equal(4, collection);
         }
     }
 }

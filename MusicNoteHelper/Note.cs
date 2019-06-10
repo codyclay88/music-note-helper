@@ -16,6 +16,8 @@ namespace MusicNoteHelper
 
         public string Name { get; }
 
+        public Accidental 
+
         public static Note For(string note)
         {
             return PossibleNotes.FirstOrDefault(n => n.Name == note) ?? Note.Rest;
@@ -54,8 +56,8 @@ namespace MusicNoteHelper
 
         private static Note[] PossibleNotes = new Note[]
         {
-            Note.A, Note.ASharp, Note.B, Note.C, Note.CSharp, Note.D, Note.DSharp,
-            Note.E, Note.F, Note.FSharp, Note.G, Note.GSharp
+            Note.AFlat, Note.A, Note.ASharp, Note.BFlat, Note.B, Note.C, Note.CSharp, Note.DFlat, Note.D,
+            Note.DSharp, Note.EFlat, Note.E, Note.F, Note.FSharp, Note.GFlat, Note.G, Note.GSharp
         };
 
         public Note Sharpen()
@@ -68,16 +70,21 @@ namespace MusicNoteHelper
             return this;
         }
 
+        public static Note AFlat => new Note("Ab");
         public static Note A => new Note("A");
         public static Note ASharp => new Note("A#");
+        public static Note BFlat => new Note("Bb");
         public static Note B => new Note("B");
         public static Note C => new Note("C");
         public static Note CSharp => new Note("C#");
+        public static Note DFlat => new Note("Db");
         public static Note D => new Note("D");
         public static Note DSharp => new Note("D#");
+        public static Note EFlat => new Note("Eb");
         public static Note E => new Note("E");
         public static Note F => new Note("F");
         public static Note FSharp => new Note("F#");
+        public static Note GFlat => new Note("Gb");
         public static Note G => new Note("G");
         public static Note GSharp => new Note("G#");
 

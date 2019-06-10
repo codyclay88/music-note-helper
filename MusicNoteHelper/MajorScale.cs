@@ -10,7 +10,7 @@ namespace MusicNoteHelper
     /// </summary>
     public class MajorScale
     {
-        public static IEnumerable<Note> For(Note note)
+        public static ICollection<Note> For(Note note)
         {
             var interval = Interval.For(note);
             return new Note[]

@@ -10,43 +10,69 @@ namespace CommandLineClient
     {
         static void Main(string[] args)
         {
+            var response = String.Empty;
             var strNote = String.Empty;
+            var extras = String.Empty;
             while(strNote.ToLower() != "exit")
             {
                 Console.Write("Enter a note: ");
-                strNote = Console.ReadLine();
-                var note = Note.For(strNote.ToUpper());
+                response = Console.ReadLine();
+                var responseContents = response.Split(" ");
+                strNote = responseContents.ElementAtOrDefault(0) ?? String.Empty;
+                extras = responseContents.ElementAtOrDefault(1) ?? "M";
+
+                var note = Note.For(strNote.ToUpper().FirstOrDefault().ToString());
                 if (note == Note.Rest)
                 {
                     Console.WriteLine("Invalid Note.");
                     continue;
                 }
 
-                var intervals = Interval.For(note);
-                Console.WriteLine("\n=== INTERVALS ===");
-                PrintIntervals(intervals);
+                //var intervals = Interval.For(note);
+                //Console.WriteLine("\n=== INTERVALS ===");
+                //PrintIntervals(intervals);
 
-                Console.WriteLine("\n=== NOTES IN MAJOR SCALE ===");
-                var notesOfMajorScale = MajorScale.For(note);
-                Console.WriteLine(String.Join<Note>(" - ", notesOfMajorScale));
+                if (extras == "M")
+                {
+                    Console.WriteLine("\n=== NOTES IN MAJOR SCALE ===");
+                    var notesOfMajorScale = MajorScale.For(note);
+                    Console.WriteLine(String.Join<Note>(" - ", notesOfMajorScale));
 
-                Console.WriteLine("\n=== NOTES IN MAJOR CHORD ===");
-                var notesOfMajorChord = MajorChord.For(note);
-                Console.WriteLine(String.Join<Note>(" - ", notesOfMajorChord));
+                    Console.WriteLine("\n=== NOTES IN MAJOR PENTATONIC SCALE ===");
+                    var notesOfMajorPentatonicScale = MajorPentatonicScale.For(note);
+                    Console.WriteLine(String.Join<Note>(" - ", notesOfMajorPentatonicScale));
 
-                Console.WriteLine("\n=== MAJOR CHORD NOTES ON GUITAR ===");
-                PrintChordNotesOnInstrument(StringedInstrument.Guitar, notesOfMajorChord);
+                    Console.WriteLine("\n=== MAJOR PENTATONIC NOTES ON GUITAR ===");
+                    PrintChordNotesOnInstrument(StringedInstrument.Guitar, notesOfMajorPentatonicScale);
+                }
 
-                Console.WriteLine("\n=== NOTES IN MINOR SCALE ===");
-                var notesOfMinorScale = MinorScale.For(note);
-                Console.WriteLine(String.Join<Note>(" - ", notesOfMinorScale));
+                if(extras == "m")
+                {
+                    Console.WriteLine("\n=== NOTES IN MINOR SCALE ===");
+                    var notesOfMinorScale = MinorScale.For(note);
+                    Console.WriteLine(String.Join<Note>(" - ", notesOfMinorScale));
 
-                Console.WriteLine("\n=== NOTES IN MINOR CHORD ===");
-                var notesOfMinorChord = MinorChord.For(note);
-                Console.WriteLine(String.Join<Note>(" - ", notesOfMinorChord));
+                    Console.WriteLine("\n=== NOTES IN MINOR PENTATONIC SCALE ===");
+                    var notesOfMinorPentatonicScale = MinorPentatonicScale.For(note);
+                    Console.WriteLine(String.Join<Note>(" - ", notesOfMinorPentatonicScale));
 
-                Console.WriteLine("\n=== MINOR CHORD NOTES ON GUITAR ===");
-                PrintChordNotesOnInstrument(StringedInstrument.Guitar, notesOfMinorChord);
+                    Console.WriteLine("\n=== MINOR PENTATONIC NOTES ON GUITAR ===");
+                    PrintChordNotesOnInstrument(StringedInstrument.Guitar, notesOfMinorPentatonicScale);
+                }
+
+                //Console.WriteLine("\n=== NOTES IN MAJOR CHORD ===");
+                //var notesOfMajorChord = MajorChord.For(note);
+                //Console.WriteLine(String.Join<Note>(" - ", notesOfMajorChord));
+
+                //Console.WriteLine("\n=== MAJOR CHORD NOTES ON GUITAR ===");
+                //PrintChordNotesOnInstrument(StringedInstrument.Guitar, notesOfMajorChord);
+
+                //Console.WriteLine("\n=== NOTES IN MINOR CHORD ===");
+                //var notesOfMinorChord = MinorChord.For(note);
+                //Console.WriteLine(String.Join<Note>(" - ", notesOfMinorChord));
+
+                //Console.WriteLine("\n=== MINOR CHORD NOTES ON GUITAR ===");
+                //PrintChordNotesOnInstrument(StringedInstrument.Guitar, notesOfMinorChord);
 
                 Console.WriteLine("=======================\n");
             }
