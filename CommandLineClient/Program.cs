@@ -21,7 +21,7 @@ namespace CommandLineClient
                 strNote = responseContents.ElementAtOrDefault(0) ?? String.Empty;
                 extras = responseContents.ElementAtOrDefault(1) ?? "M";
 
-                var note = Note.For(strNote.ToUpper().FirstOrDefault().ToString());
+                var note = Note.Parse(strNote.ToUpper().FirstOrDefault().ToString());
                 if (note == Note.Rest)
                 {
                     Console.WriteLine("Invalid Note.");

@@ -29,11 +29,11 @@ namespace MusicNoteHelper
         private static Note[] GetIntervalFor(Note rootNote)
         {
             var notes = new Note[12];
-            var noteNode = NoteNode.For(rootNote);
+            var currentNote = rootNote;
             for(int i = 0; i < 12; i++)
             {
-                notes[i] = noteNode.Note;
-                noteNode = NoteNode.For(noteNode.Next);
+                notes[i] = currentNote;
+                currentNote = currentNote.Sharpen();
             }
             return notes;
         }

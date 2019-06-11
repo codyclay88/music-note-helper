@@ -21,12 +21,12 @@ namespace MusicNoteHelper
 
         public Note[] PossibleNotes()
         {
-            var noteNode = NoteNode.For(Tuning);
+            var currentNote = Tuning;
             var notes = new Note[NumberOfFrets];
             for(int currentFret = 0; currentFret < NumberOfFrets; currentFret++)
             {
-                notes[currentFret] = noteNode.Note;
-                noteNode = NoteNode.For(noteNode.Next);
+                notes[currentFret] = currentNote;
+                currentNote = currentNote.Sharpen();
             }
             return notes;
         }
